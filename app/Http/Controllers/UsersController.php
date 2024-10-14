@@ -29,11 +29,12 @@ class UsersController extends Controller
             $name = $request->name;
             $email = $request->email;
             $password = $request->password;
-
+            $tipo = $request->tipo ?? "usuario";
             $user = User::create([
                 'name' => $name,
                 'email' => $email,
-                'password' => $password
+                'password' => $password,
+                'tipo' => $tipo
             ]);
 
             return response()->json(['user' => $user]);
