@@ -7,6 +7,7 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 
 Route::group(['prefix' => 'users'], function(){
@@ -42,5 +43,12 @@ Route::group(['prefix' => 'pagos'], function(){
     Route::get('/', [PaymentsController::class, 'index']);
     Route::post('/', [PaymentsController::class, 'new']);
 });
+## routa para ver la conexion con back and front 
+Route::get('/test', function () {
+    return response()->json(['message' => 'Conexión exitosa'], 200);
+});
+## routa para registro
 
+
+Route::post('/register', [AuthController::class, 'register']);
 
