@@ -14,7 +14,7 @@ class ServicesController extends Controller
             //code...
             $services = Servicio::all();
 
-            return response()->json(["servicios: " => $services]);
+            return response()->json(["servicios" => $services]);
 
         } catch (\Throwable $th) {
             //throw $th;
