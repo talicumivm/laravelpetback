@@ -17,4 +17,14 @@ class Cita extends Model
         'id_proveedor', 
         'id_cliente'
     ];
+    public function mascota()
+{
+    return $this->belongsTo(Mascota::class, 'id_mascota');
+}
+
+public function servicio()
+{
+    return $this->belongsTo(Servicio::class, 'id_servicio');
+}
+
 }

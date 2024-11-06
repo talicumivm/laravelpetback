@@ -15,5 +15,10 @@ class Servicio extends Model
         'precio',
         'id_usuario'
     ];
+    public function citas()
+ {
+    return $this->hasMany(Cita::class, 'id_servicio');
+ }
+
 
 }

@@ -17,4 +17,9 @@ class Mascota extends Model
         'edad',
         'id_usuario', // Asegúrate de que este campo coincide con tu clave foránea
     ];
+    public function user()
+{
+    return $this->belongsTo(User::class, 'id_usuario');
+}
+
 }

@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Models;
-
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -48,5 +46,21 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    /**
+     * Relación hasMany para las citas donde el usuario es el proveedor (por ejemplo, un veterinario)
+     */
+    public function citasComoProveedor()
+    {
+        return $this->hasMany(Cita::class, 'id_proveedor');
+    }
+
+    /**
+     * Relación hasMany para las citas donde el usuario es el cliente (dueño de la mascota)
+     */
+    public function citasComoCliente()
+    {
+        return $this->hasMany(Cita::class, 'id_cliente');
     }
 }
