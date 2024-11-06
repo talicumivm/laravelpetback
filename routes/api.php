@@ -37,6 +37,7 @@ Route::group(['prefix' => 'citas'], function(){
     Route::get('/{id}', [DatesController::class, 'view']);
     Route::put('/{id}',[DatesController::class, 'edit']);
     Route::delete('/{id}', [DatesController::class, 'delete']);
+    Route::get('/{id}/user', [DatesController::class, 'getPerUser']);
 });
 
 Route::group(['prefix' => 'pagos'], function(){
