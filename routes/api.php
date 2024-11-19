@@ -15,6 +15,7 @@ Route::group(['prefix' => 'users'], function(){
     Route::post('/', [UsersController::class, 'new']);
     Route::get('/{id}', [UsersController::class, 'view']);
     Route::put('/{id}', [UsersController::class, 'edit']);
+    Route::post('/login',[UsersController::class, 'login']);
 
 });
 

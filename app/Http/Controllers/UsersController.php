@@ -95,4 +95,31 @@ class UsersController extends Controller
         return response()->json(['user' => $user, 'message' => 'Usuario actualizado correctamente'], 200);
     }
 
+    public function login(Request $request)
+    {
+        // return response()->json(['sex' => 'sex']);
+        // Validar la entrada del usuario
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
+        
+        // Intentar encontrar al usuario por el email
+        $user = User::where('email', $request->email)->first();
+
+        
+        // return response()->json(['sex' => $user->password]);
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            // Si el usuario no existe o la contraseña no es válida
+            return response()->json(['message' => 'Credenciales inválidas'], 401);
+        }
+        
+        // Responder con el token de acceso
+        return response()->json([
+            'message' => 'Inicio de sesión exitoso',
+            'user' => $user,
+        ], 200);
+
+    }
+
 }
