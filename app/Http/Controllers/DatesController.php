@@ -42,7 +42,7 @@ class DatesController extends Controller
                 ->first();
 
             if ($citaExistente) {
-                return response()->json(["error" => "El proveedor ya tiene una cita en esa fecha y hora."]);
+                return response()->json(["error" => "El proveedor ya tiene una cita en esa fecha y hora."],400);
             }
             // Si no existe cita, crear la nueva cita
             $cita = Cita::create([
