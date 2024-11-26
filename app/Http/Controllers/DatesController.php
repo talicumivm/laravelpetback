@@ -117,4 +117,21 @@ class DatesController extends Controller
         return response()->json(["error" => $th->getMessage()]);
     }
 }
+
+public function getPerProvider($id)
+{
+    try {
+        // Buscar citas que tengan el id_cliente igual al $id del parámetro
+        $citas = Cita::where('id_proveedor', $id)->get();
+
+        if ($citas->isEmpty()) {
+            return response()->json(["mensaje" => "No se encontraron citas para este cliente."]);
+        }
+
+        return response()->json(["citas encontradas" => $citas]);
+
+    } catch (\Throwable $th) {
+        return response()->json(["error" => $th->getMessage()]);
+    }
+}
 }

@@ -45,7 +45,7 @@ class PetsController extends Controller
                 'nombre' => $request->nombre,
                 'especie' => $request->especie,
                 'raza' => $request->raza,
-                'peso' => $request->peso,
+                'peso' => 24,
                 'edad' => $request->edad,
                 'id_usuario' => $request->id_usuario,
             ]);
